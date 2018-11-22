@@ -53,9 +53,9 @@ public struct GraphQLField: GraphQLSelection {
   func cacheKey(with variables: [String: JSONEncodable]?) throws -> String {
     if let argumentValues = try arguments?.evaluate(with: variables), !argumentValues.isEmpty {
       let argumentsKey = orderIndependentKey(for: argumentValues)
-      return "\(name)(\(argumentsKey))"
+      return "\(responseKey)(\(argumentsKey))"
     } else {
-      return name
+      return responseKey
     }
   }
 }
